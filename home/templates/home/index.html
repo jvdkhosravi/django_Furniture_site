@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block content %}
+    <div class="hero">
+        <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-lg-5">
+                    <div class="intro-excerpt">
+                        <h1>Modern Interior <span clsas="d-block">Design Studio</span></h1>
+                        <p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam
+                            vulputate velit imperdiet dolor tempor tristique.</p>
+                        <p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#"
+                                                                                    class="btn btn-white-outline">Explore</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <div class="hero-img-wrap">
+                        <img src="{% static "images/couch.png" %}" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Hero Section -->
+
+    <!-- Start Product Section -->
+    <div class="product-section">
+        <div class="container">
+            <div class="row">
+
+                <!-- Start Column 1 -->
+
+                <!-- End Column 1 -->
+                {% if best_selling_product %}
+                    <!-- Start Column 2 -->
+                    <div class="best-selling-products">
+                        <h2>Best Selling Products</h2>
+                        {% for product in best_selling_product %}
+
+                            <div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+                                <a class="product-item" href="cart.html">
+                                    {% thumbnail product.image "261x261" quality=90 crop='center' as im %}
+                                        <img src="{{ im.url }}" class="img-fluid product-thumbnail">
+                                    {% endthumbnail %}
+                                    <h3 class="product-title">{{ product.title }}</h3>
+                                    <strong class="product-price">{{ product.price }}</strong>
+
+                                    <span class="icon-cross">
+								<img src="{% static "images/cross.svg" %}" class="img-fluid">
+							</span>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            </div>
+        </div>
+        <!-- End Product Section -->
+
+        <!-- Start Why Choose Us Section -->
+        <div class="why-choose-section">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-6">
+                        <h2 class="section-title">Why Choose Us</h2>
+                        <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
+                            velit
+                            imperdiet dolor tempor tristique.</p>
+
+                        <div class="row my-5">
+                            {% for feature in features %}
+                                <div class="col-6 col-md-6">
+                                    <div class="feature">
+                                        <div class="icon">
+                                            <img src="{{ feature.icon.url }}" alt="Image" class="imf-fluid">
+                                        </div>
+                                        <h3>{{ feature.title }}</h3>
+                                        <p>{{ feature.description }}</p>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-5">
+                        {% if image %}
+                            <div class="img-wrap">
+                                <img src="{{ image.image.url }}" alt="Image" class="img-fluid">
+                            </div>
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- End Why Choose Us Section -->
+
+        <!-- Start We Help Section -->
+        <div class="we-help-section">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-lg-7 mb-5 mb-lg-0">
+                        <div class="imgs-grid">
+                            <div class="grid grid-1"><img src="{{ we_help_section.grid_1_image.url }}" alt="Untree.co">
+                            </div>
+                            <div class="grid grid-2"><img src="{{ we_help_section.grid_2_image.url }}" alt="Untree.co">
+                            </div>
+                            <div class="grid grid-3"><img src="{{ we_help_section.grid_3_image.url }}" alt="Untree.co">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 ps-lg-5">
+                        <h2 class="section-title mb-4">{{ we_help_section.title }}</h2>
+                        <p>{{ we_help_section.description }}</p>
+
+                        <ul class="list-unstyled custom-list my-4">
+                            <li>{{ we_help_section.list_item_1 }}</li>
+                            <li>{{ we_help_section.list_item_2 }}</li>
+                            <li>{{ we_help_section.list_item_3 }}</li>
+                            <li>{{ we_help_section.list_item_4 }}</li>
+                        </ul>
+                        <p><a herf="#" class="btn">Explore</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End We Help Section -->
+
+        <!-- Start Popular Product -->
+        <div class="popular-product">
+            <div class="container">
+                <div class="row">
+                    {% for product in products %}
+                        <div class="col-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
+                            <div class="product-item-sm d-flex">
+
+                                <div class="thumbnail">
+                                    <img src="{{ product.image.url }}" alt="Image" class="img-fluid">
+                                </div>
+                                <div class="pt-3">
+                                    <h3>{{ product.title }}</h3>
+                                    <p>{{ product.description }} </p>
+                                    <p><a href="#">Read More</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <!-- End Popular Product -->
+
+        <!-- Start Testimonial Slider -->
+        <div class="testimonial-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7 mx-auto text-center">
+                        <h2 class="section-title">Testimonials</h2>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-12">
+                        <div class="testimonial-slider-wrap text-center">
+
+                            <div id="testimonial-nav">
+                                <span class="prev" data-controls="prev"><span class="fa fa-chevron-left"></span></span>
+                                <span class="next" data-controls="next"><span class="fa fa-chevron-right"></span></span>
+                            </div>
+
+                            <div class="testimonial-slider">
+                                {% for test in testimonials %}
+                                    <div class="item">
+                                        <div class="row justify-content-center">
+                                            <div class="col-lg-8 mx-auto">
+
+                                                <div class="testimonial-block text-center">
+                                                    <blockquote class="mb-5">
+                                                        <p>{{ test.quote }}</p>
+                                                    </blockquote>
+
+                                                    <div class="author-info">
+                                                        <div class="author-pic">
+                                                            <img src="{{ test.author_image }}" alt="Maria Jones"
+                                                                 class="img-fluid">
+                                                        </div>
+                                                        <h3 class="font-weight-bold">{{ test.author_name }}</h3>
+                                                        <span class="position d-block mb-3">{{ test.author_title }}</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- END item -->
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Testimonial Slider -->
+
+        <!-- Start Blog Section -->
+        <div class="blog-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-md-6">
+                        <h2 class="section-title">Recent Blog</h2>
+                    </div>
+                    <div class="col-md-6 text-start text-md-end">
+                        <a href="#" class="more">View All Posts</a>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% for product in latest_products %}
+                        <div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+                            <div class="post-entry">
+                                {% if product.image %}
+                                    <a href="#" class="post-thumbnail"><img src="{{ product.image.url }}" alt="Image"
+                                                                            class="img-fluid"></a>
+                                {% endif %}
+                                <div class="post-content-entry">
+                                    <h3><a href="#">{{ product.title }}</a></h3>
+                                    <
+                                    <div class="meta">
+                                        <span>قیمت: {{ product.price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+        <!-- End Blog Section -->
+
+{% endblock %}
