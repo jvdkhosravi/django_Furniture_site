@@ -18,19 +18,28 @@ To get started with the project, follow these steps:
 
 Clone the Repository:
 
+
+
 git clone https://github.com/jvdkhosravi/django_Furniture_site.git
 cd django_Furniture_site
 Create a Virtual Environment (optional but recommended):
+
 
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 Install Dependencies:
 
+
+
 pip install -r requirements.txt
 Run Migrations:
 
+
+
 python manage.py migrate
 Run the Development Server:
+
+
 
 python manage.py runserver
 Access the Application: Open your browser and go to http://127.0.0.1:8000/.
